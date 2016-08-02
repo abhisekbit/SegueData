@@ -25,10 +25,19 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let SecondView : SecondViewController = segue.destinationViewController as! SecondViewController
+    @IBAction func btn_Click(sender: AnyObject) {
         
-        SecondView.GetSegwayData = txtInput.text!
+        self.performSegueWithIdentifier("FirstSegue", sender: self)
+        
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "FirstSegue" {
+            let SecondView : SecondViewController = segue.destinationViewController as! SecondViewController
+            
+            SecondView.GetSegwayData = txtInput.text!
+        }
+        
     }
 
 
